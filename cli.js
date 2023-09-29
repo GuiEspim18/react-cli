@@ -91,7 +91,7 @@ class Cli {
         let fileContent;
         if (type === "component") {
             fileName = `${funcName}.jsx`; 
-            fileContent = `function ${funcName} () {\n    return(<></>);\n};\nexport default ${funcName};`
+            fileContent = `function ${funcName} () {\n    return(<></>);\n}\nexport default ${funcName};`
         }
         if (type === "styled") {
             fileName = `${funcName}.styled.jsx`; 
