@@ -95,7 +95,7 @@ class Cli {
         }
         if (type === "styled") {
             fileName = `${funcName}.styled.jsx`; 
-            fileContent = `import { styled } from "styled-components"\n\nexport const Styled${funcName} = ` + "`\n\n`" 
+            fileContent = `import { styled } from "styled-components"\n\nexport const Styled${funcName} = styled.section` + "`\n\n`" 
         }
         fs.appendFile(fileName, fileContent, (err) => {
             return err;
