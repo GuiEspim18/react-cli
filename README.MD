@@ -1,5 +1,4 @@
-<p>Para adicionar o comando CLI no seu computador é necessário digitar o código "npm install -g ." dentro da pasta command-line-js.
-Passo a passo:</p>
+<h1>Passo a passo:</h1>
 <ol>
     <li>Clone o repositório</li>
     <li>Localize a pasta react-cli</li>
