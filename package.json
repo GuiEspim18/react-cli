@@ -1,0 +1,26 @@
+{
+  "name": "rc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./bin/bin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "rc": "./bin/bin.js"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "type": "commonjs",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "-": "^0.0.1",
+    "arg": "^5.0.2",
+    "esm": "^3.2.25",
+    "fs": "^0.0.1-security",
+    "g": "^2.0.1",
+    "inquirer": "^8.0.0"
+  }
+}
