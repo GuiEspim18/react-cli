@@ -10,3 +10,4 @@
 <h2>Comandos:</h2>
 <p>  <b>rc --component nome</b> ou <b>rc --c nome</b></p>
 <p>  <b>rc --styled nome</b> ou <b>rc --s nome</b></p>
+<p>  <b>rc --react-component nome</b> ou <b>rc --rcc nome</b></p>

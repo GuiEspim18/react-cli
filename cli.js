@@ -11,7 +11,9 @@ class Cli {
             "--component": Boolean,
             "--styled": Boolean,
             "--c": "--component",
-            "--s": "--styled"
+            "--s": "--styled",
+            "--react-component": Boolean,
+            "--rcc": "--react-component"
         },
         {
             argv: raw.slice(2)
@@ -53,7 +55,7 @@ class Cli {
             type: 'list',
             name: 'template',
             message: 'Please choose which option to use',
-            choices: ['--styled', '--component'],
+            choices: ['--styled', '--component', "--react-component"],
         };
         const name = {
             type: 'text',
@@ -91,16 +93,36 @@ class Cli {
         let fileContent;
         if (type === "component") {
             fileName = `${funcName}.jsx`; 
-            fileContent = `function ${funcName} () {\n    return(<></>);\n}\nexport default ${funcName};`
+            fileContent = `function ${funcName} () {\n    return(<></>);\n}\nexport default ${funcName};`;
+            fs.appendFile(fileName, fileContent, (err) => {
+                return err;
+            });
+            console.info(`File ${fileName} created`);
         }
         if (type === "styled") {
             fileName = `${funcName}.styled.jsx`; 
-            fileContent = `import { styled } from "styled-components"\n\nexport const Styled${funcName} = styled.section` + "`\n\n`" 
+            fileContent = `import { styled } from "styled-components"\n\nexport const Styled${funcName} = styled.section` + "`\n\n`" ;
+            fs.appendFile(fileName, fileContent, (err) => {
+                return err;
+            });
+            console.info(`File ${fileName} created`);
         }
-        fs.appendFile(fileName, fileContent, (err) => {
-            return err;
-        });
-        console.info(`File ${fileName} created`);
+        if (type === "react-component") {
+            const component = `${funcName}.jsx`; 
+            const styled = `${funcName}.styled.jsx`;
+            const componentContent = `import { Styled${funcName} } from "./${styled}";\n\nfunction ${funcName} () {\n    return(<></>);\n}\nexport default ${funcName};`;
+            const styledContent =  `import { styled } from "styled-components"\n\nexport const Styled${funcName} = styled.section` + "`\n\n`";
+            fs.mkdir(funcName, (err) => {
+                if (err) return err;
+                fs.writeFile(`${funcName}/${component}`, componentContent, (err) => {
+                    return err;
+                });
+                fs.writeFile(`${funcName}/${styled}`, styledContent, (err) => {
+                    return err
+                });
+            });
+            console.info(`React component ${funcName} created`);
+        }
     }
 
 
